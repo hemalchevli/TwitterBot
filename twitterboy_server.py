@@ -1,5 +1,3 @@
-
-#######################################################################
 '''
 My twitter retweet bot, stor the search results in array and retweet them
 '''
@@ -7,35 +5,16 @@ from random import randint
 import time 
 import sys
 import twitter
-'''
-Wolfram alpha app id 	R9L5RY-KQ29A2846Y
-Consumer key 	uNYcuQLQF9O8hzjSRHI2w
-Consumer secret 	oE2PCNYSbjFVwQSyNukDVQbh7b5a0hE71MQWIDgg
-Access token 	1679781624-a1wv7R4xUN88HaAjszMG49TAYSGC6lX0JZcn09F
-Access token secret 	yxCZqypJlP7GfnRsz2Ds8tETES8HLXhPyYCEqFweP38'''
 
-#user _hemalc app phitters
-#api = twitter.Api(consumer_key='uNYcuQLQF9O8hzjSRHI2w',
-#                  consumer_secret='oE2PCNYSbjFVwQSyNukDVQbh7b5a0hE71MQWIDgg',
-#                  access_token_key='1679781624-a1wv7R4xUN88HaAjszMG49TAYSGC6lX0JZcn09F',
-#                  access_token_secret='yxCZqypJlP7GfnRsz2Ds8tETES8HLXhPyYCEqFweP38')
-                  
-                  
-'''
-User hemalchevli app rettytter
-Consumer key 	Ic7RsuNeHsCY6lS5N8pGw
-Consumer secret 	RFhU13vFNlZhUFUtRDu1nesZTCdxkOpK94DePJ9AE
-Access token 	33941337-tJRqLUzeI7QyyMpgQAwLN5MHAkh51VBGmicEx7PQ
-Access token secret 	S4r5EiAjg9MMfILeq5ALp6Lfl58iVW6OSODj6pDag'''
-api = twitter.Api(consumer_key='Ic7RsuNeHsCY6lS5N8pGw',
-                  consumer_secret='RFhU13vFNlZhUFUtRDu1nesZTCdxkOpK94DePJ9AE',
-                  access_token_key='33941337-tJRqLUzeI7QyyMpgQAwLN5MHAkh51VBGmicEx7PQ',
-                  access_token_secret='S4r5EiAjg9MMfILeq5ALp6Lfl58iVW6OSODj6pDag')
+api = twitter.Api(consumer_key='xxxxxxxxxxxxxxxxxxxx',
+                  consumer_secret='xxxxxxxxxxxxxxxxxxxx',
+                  access_token_key='xxxxxxxxxxxxxxxxxxxx',
+                  access_token_secret='xxxxxxxxxxxxxxxxxxxx')
 
-
+# add any terms you want
 find = ['arduino','rasberry pi','linux','ubuntu','android','automation','python','robotics','3d printer','open source']
-#find = ['arduino']
 
+#loop through all
 for f in find:
 		results = api.GetSearch(f)
 		print "\tfound %s for %s" %(len(results),f)
@@ -53,10 +32,10 @@ for f in find:
 					api.PostRetweet(statusObj.id)
 					delay = randint(120,180)
 					print delay
-					time.sleep(delay)
+					time.sleep(delay) #prevent account suspension 
 					continue
 				else:
-					print "has a mention"
+					print "has a mention" # if a tweet has a mention it will skip it and move to next
 				
 			except Exception:
 				print "Unexpected error:", sys.exc_info()[0:2]
