@@ -1,5 +1,5 @@
 '''
-My twitter retweet bot, stor the search results in array and retweet them
+My twitter retweet bot, store the search terms in array and retweet the tweets that include the search term 
 '''
 from random import randint
 import time
@@ -16,7 +16,7 @@ find = ['arduino','rasberry pi','linux','ubuntu','android','automation','python'
 
 #loop through all
 for f in find:
-                results = api.GetSearch(f)
+                results = api.GetSearch(f,lang = 'en')
                 print "\tfound %s for %s" %(len(results),f)
                 for statusObj in results:
                         try:
